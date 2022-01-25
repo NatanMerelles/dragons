@@ -1,19 +1,36 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { PrivateContent } from './components';
+import { ThemeProvider } from 'styled-components';
+
 import { GlobalContextProvider } from './contexts';
+import GlobalStyle from './styles/globalStyle';
+import theme from './styles/theme';
+import { PrivateContent } from './components';
+import { Login } from './containers';
 
 const App = () => {
   return (
     <BrowserRouter>
       <GlobalContextProvider>
-        <Routes>
-          <Route path="/login" exact element={<div>login</div>} />
+        <ThemeProvider theme={theme}>
+          <GlobalStyle />
 
-          <Route path="/" exact element={<PrivateContent><div>root</div></PrivateContent>} />
+          <Routes>
+            <Route path="/login" exact element={<Login />} />
 
-          <Route path="dragons/:dragonId" exact element={<PrivateContent><div>dragão</div></PrivateContent>} />
+            <Route path="/" exact element={
+              <PrivateContent>
+                <div>root</div>
+              </PrivateContent>
+            } />
 
-        </Routes>
+            <Route path="dragons/:dragonId" exact element={
+              <PrivateContent>
+                <div>dragão</div>
+              </PrivateContent>
+            } />
+
+          </Routes>
+        </ThemeProvider>
       </GlobalContextProvider>
     </BrowserRouter>
   );
