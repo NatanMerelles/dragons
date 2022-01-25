@@ -1,17 +1,15 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { ThemeProvider } from 'styled-components';
-
 import { GlobalContextProvider } from './contexts';
 import GlobalStyle from './styles/globalStyle';
-import theme from './styles/theme';
+import ThemeProvider from './styles/themeProvider';
 import { PrivateContent } from './components';
-import { Login } from './containers';
+import { Login, Dragons } from './containers';
 
 const App = () => {
   return (
     <BrowserRouter>
       <GlobalContextProvider>
-        <ThemeProvider theme={theme}>
+        <ThemeProvider>
           <GlobalStyle />
 
           <Routes>
@@ -19,7 +17,7 @@ const App = () => {
 
             <Route path="/" exact element={
               <PrivateContent>
-                <div>root</div>
+                <Dragons />
               </PrivateContent>
             } />
 

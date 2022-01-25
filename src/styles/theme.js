@@ -1,7 +1,16 @@
-export default {
-	colors: {
-		background: '#2C2C2C',
-		text: '#FFFFFF',
-		darkGray: '#404040'
+const modes = {
+	dark: {
+		background: '#2B2A33',
+		secondary: '#42414d',
+		text: '#FFF',
+	},
+	light: {
+		background: '#CCC',
+		secondary: '#FFF',
+		text: '#2B2A33',
 	}
 }
+
+export default (mode) => ({
+	colors: modes[mode]
+});

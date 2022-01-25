@@ -1,108 +1,68 @@
-import styled from 'styled-components';
-import Background from '../../background.png';
+import { useRef } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
-const Item = styled.div`
-	display: flex;
-	justify-content: center;
-	width: 100%;
+import { useGlobalContext } from '../../contexts';
 
-	margin-bottom: 46px;
-
-	:last-child{
-		margin: 0;
-	}
-`;
-
-const Form = styled.form``;
-
-Object.assign(Form, { Item });
-
-const Title = styled.h1`
-	margin-bottom: 48px;
-
-	font-family: 'Archivo', sans-serif;
-`;
-
-const Card = styled.div`
-	background: ${props => props.theme.colors.darkGray};
-	opacity: .6;
-	max-width: 562px;
-	padding: 54px;
-	border-radius: 16px;
-`;
-
-const Input = styled.input`
-	outline: none;
-
-	width: 100%;
-	height: 42px;
-	font-size: 24px;
-	border: 0;
-	background: transparent;
-
-	border-bottom: 1px solid;
-	color: white;
-	opacity: .4;
-	transition: opacity .2s;
-
-	:focus {
-		opacity: 1;
-	}
-`;
-
-const Button = styled.button`
-	outline: none;
-	
-	width: 328px;
-	height: 48px;
-	font-size: 24px;
-	background: white;
-	border: 1px solid;
-	border-radius: 12px;
-	color: #2C2C2C;
-
-	cursor: pointer;
-
-	transition: all .35s ease-in-out;
-
-	:hover, :focus {
-		background: #2C2C2C;
-		color: white;
-	}
-`;
-
-const Wrapper = styled.main`
-	height: 100vh;
-	width: 100vw;
-
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-`;
+import { Form } from '../../components';
+import { Card, PageWrapper, Title } from './style';
 
 const Login = () => {
+	const usernameRef = useRef({});
+	const passwordRef = useRef({});
+
+	const global = useGlobalContext();
+	const navigate = useNavigate();
+	const location = useLocation();
+
+	const handleButtonLogin = (e) => {
+		e.preventDefault();
+
+		const username = usernameRef.current.value;
+		const password = passwordRef.current.value;
+
+		if (username === 'admin' && password === '123123') {
+			const hasPrevRoute = location && location.state && location.state.from;
+			const route = hasPrevRoute ? location.state.from.pathname : '/';
+
+			global
+				.signin(username)
+				.then(() => {
+					navigate(route, { replace: true });
+				});
+		}
+	}
+
 	return (
-		<Wrapper>
+		<PageWrapper>
 			<Card>
 
-				<Title>Seja Bem-vindo(a) ao Dragon Repo</Title>
+				<Title>Seja Bem-vindo(a) ao DragonRepo</Title>
 
 				<Form>
-					<Form.Item>
-						<Input type='text' placeholder="Digite seu Login" />
-					</Form.Item>
+					<Form.Row>
+						<Form.Input
+							ref={usernameRef}
+							type='text'
+							placeholder="Digite seu Login"
+						/>
+					</Form.Row>
 
-					<Form.Item>
-						<Input type='password' placeholder="Digite sua Senha" />
-					</Form.Item>
+					<Form.Row>
+						<Form.Input
+							ref={passwordRef}
+							type='password'
+							placeholder="Digite sua Senha"
+						/>
+					</Form.Row>
 
-					<Form.Item>
-						<Button onClick={e => e.preventDefault()}>Login</Button>
-					</Form.Item>
+					<Form.Row>
+						<Form.Button onClick={handleButtonLogin}>
+							Login
+						</Form.Button>
+					</Form.Row>
 				</Form>
 			</Card >
-		</Wrapper >
+		</PageWrapper >
 	)
 }
 
