@@ -5,6 +5,10 @@ import { Button } from '../../';
 const HeaderContent = styled.div`
   display: flex;
   justify-content: space-between;
+
+  > h1 {
+    color: white;
+  }
 `;
 
 const HeaderStyle = styled.header`

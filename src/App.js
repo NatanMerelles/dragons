@@ -1,34 +1,44 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import {
+  QueryClient,
+  QueryClientProvider,
+} from 'react-query'
+
 import { GlobalContextProvider } from './contexts';
-import GlobalStyle from './styles/globalStyle';
 import ThemeProvider from './styles/themeProvider';
+
+import GlobalStyle from './styles/globalStyle';
 import { PrivateContent } from './components';
 import { Login, Dragons } from './containers';
+
+const queryClient = new QueryClient();
 
 const App = () => {
   return (
     <BrowserRouter>
       <GlobalContextProvider>
-        <ThemeProvider>
-          <GlobalStyle />
+        <QueryClientProvider client={queryClient}>
+          <ThemeProvider>
+            <GlobalStyle />
 
-          <Routes>
-            <Route path="/login" exact element={<Login />} />
+            <Routes>
+              <Route path="/login" exact element={<Login />} />
 
-            <Route path="/" exact element={
-              <PrivateContent>
-                <Dragons />
-              </PrivateContent>
-            } />
+              <Route path="/" exact element={
+                <PrivateContent>
+                  <Dragons />
+                </PrivateContent>
+              } />
 
-            <Route path="dragons/:dragonId" exact element={
-              <PrivateContent>
-                <div>dragão</div>
-              </PrivateContent>
-            } />
+              <Route path="dragons/:dragonId" exact element={
+                <PrivateContent>
+                  <div>dragão</div>
+                </PrivateContent>
+              } />
 
-          </Routes>
-        </ThemeProvider>
+            </Routes>
+          </ThemeProvider>
+        </QueryClientProvider>
       </GlobalContextProvider>
     </BrowserRouter>
   );

@@ -1,5 +1,9 @@
 import { useState } from 'react';
 import styled from 'styled-components';
+import { useQuery } from 'react-query';
+
+import { DragonsAPI } from '../../clients/DragonsAPI';
+
 import { Header, Footer, Container, Button, Card, FooterItems } from '../../components';
 import { useGlobalContext } from '../../contexts';
 
@@ -34,8 +38,11 @@ const CardList = styled.ul`
   margin: 0 -12px;
 `;
 
+const getDragonsFn = async () => await DragonsAPI.find();
+
 const Dragons = () => {
   const { signout } = useGlobalContext();
+  const { data: dragons } = useQuery(['dragons'], getDragonsFn, { initialData: [] });
 
   const [selected, setSelected] = useState([]);
   const [editing, setEditing] = useState(null);
@@ -74,7 +81,7 @@ const Dragons = () => {
 
           <CardList>
             {
-              mocks.map(({ id, ...props }) => (
+              dragons.map(({ id, ...props }) => (
                 <Card
                   key={id}
                   onSelect={handleCardSelect(id)}

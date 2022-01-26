@@ -1,9 +1,10 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog } from '@fortawesome/free-solid-svg-icons';
 import { Buttons, CardStyle, Checkbox, Label } from './style';
+import { capitalize } from '../../utils';
 
 const Card = ({
-  nome,
+  name,
   type = '',
   createdAt,
   isSelecting,
@@ -31,17 +32,17 @@ const Card = ({
         </div>
       </Buttons>
 
-      <h1>{nome}</h1>
+      <h1>{name}</h1>
 
       <div style={{ margin: '14px 0px' }}>
         <Label
           variant={type}>
-          {type.charAt(0).toUpperCase() + type.slice(1)}
+          {capitalize(type)}
         </Label>
       </div>
 
       <p>
-        Criado em: {createdAt && createdAt.toLocaleDateString()}
+        Criado em: {createdAt && new Date(createdAt).toLocaleDateString()}
       </p>
     </CardStyle>
   )

@@ -22,7 +22,7 @@ const FooterItems = ({ onConfirm, onDismiss, isOpen, countItems }) => {
   return (
     <Wrapper isOpen={isOpen}>
       <Item>
-        Você selecionou {countItems} {countItems > 1 ? 'itens' : 'item'}
+        Deseja excluir {countItems} {countItems > 1 ? 'itens' : 'item'}?
       </Item>
 
       <Item>
