@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Container } from '../container';
+import { Button } from '../../';
 
 const HeaderContent = styled.div`
   display: flex;
@@ -11,7 +12,7 @@ const HeaderStyle = styled.header`
   padding: 15px;
 `;
 
-const Header = () => {
+const Header = ({ onSignout = () => { } }) => {
   return (
     <HeaderStyle>
       <Container>
@@ -19,6 +20,12 @@ const Header = () => {
           <h1>
             DragonsRepo
           </h1>
+
+          <div>
+            <Button onClick={onSignout}>
+              Sair
+            </Button>
+          </div>
         </HeaderContent>
       </Container>
     </HeaderStyle>

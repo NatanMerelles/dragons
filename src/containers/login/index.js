@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { useGlobalContext } from '../../contexts';
 
 import { Form } from '../../components';
-import { Card, PageWrapper, Title } from './style';
+import { Panel, PageWrapper, Title } from './style';
 
 const Login = () => {
 	const usernameRef = useRef({});
@@ -34,8 +34,7 @@ const Login = () => {
 
 	return (
 		<PageWrapper>
-			<Card>
-
+			<Panel>
 				<Title>Seja Bem-vindo(a) ao DragonRepo</Title>
 
 				<Form>
@@ -56,12 +55,12 @@ const Login = () => {
 					</Form.Row>
 
 					<Form.Row>
-						<Form.Button onClick={handleButtonLogin}>
+						<Form.Button fullWidth onClick={handleButtonLogin}>
 							Login
 						</Form.Button>
 					</Form.Row>
 				</Form>
-			</Card >
+			</Panel >
 		</PageWrapper >
 	)
 }

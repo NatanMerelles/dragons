@@ -18,4 +18,4 @@ const Form = styled.form``;
 
 Object.assign(Form, { Row, Button, Input });
 
-export { Form }
+export { Form, Input, Button }

@@ -16,7 +16,7 @@ export const Title = styled.h1`
 	font-family: 'Archivo', sans-serif;
 `;
 
-export const Card = styled.div`
+export const Panel = styled.div`
 	background: ${props => props.theme.colors.secondary};
 	max-width: 562px;
 	padding: 54px;

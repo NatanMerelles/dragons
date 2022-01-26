@@ -1,8 +1,19 @@
 import styled from 'styled-components';
 
-const Footer = styled.footer`
+const FooterStyle = styled.footer`
+  display: flex;
+  justify-content: center;
   padding: 16px;
-  border: 1px solid red;
+  background: #1E1E1E;
+  color: white;
 `;
+
+const Footer = () => {
+  return (
+    <FooterStyle>
+      Development By: Natan Merelles
+    </FooterStyle>
+  )
+}
 
 export { Footer }
