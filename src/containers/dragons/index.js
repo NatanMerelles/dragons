@@ -1,59 +1,42 @@
 import styled from 'styled-components';
 import { Header, Footer, Container } from '../../components';
 
-export const PageWrapper = styled.main`
+const PageWrapper = styled.main`
 	height: 100vh;
 	width: 100vw;
 `;
+
+const ListWrapper = styled.div`
+  
+`;
+
+const Content = styled(Container)`
+  padding: 26px; 
+`;
+
+const ContentTitle = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 0;
+`;
+
 
 const Dragons = () => {
   return (
     <PageWrapper>
       <Header />
 
-      <main style={{ padding: '26px' }}>
-        <Container>
-          <div style={{ display: 'flex', justifyContent: 'space-between', padding: '16px 0' }}>
-            <h2>Encontre seu Dragão:</h2>
+      <Content>
+        <ContentTitle>
+          <h2>Encontre seu Dragão:</h2>
 
-            <button>+</button>
-          </div>
+          <button>+</button>
+        </ContentTitle>
 
-          <div>
-            <div style={{ width: '10px', height: '50px', border: '1px solid black' }}></div>
-            <div style={{ width: '10px', height: '50px', border: '1px solid black' }}></div>
-            <div style={{ width: '10px', height: '50px', border: '1px solid black' }}></div>
-            <div style={{ width: '10px', height: '50px', border: '1px solid black' }}></div>
-            <div style={{ width: '10px', height: '50px', border: '1px solid black' }}></div>
-            <div style={{ width: '10px', height: '50px', border: '1px solid black' }}></div>
-            <div style={{ width: '10px', height: '50px', border: '1px solid black' }}></div>
-            <div style={{ width: '10px', height: '50px', border: '1px solid black' }}></div>
-            <div style={{ width: '10px', height: '50px', border: '1px solid black' }}></div>
-            <div style={{ width: '10px', height: '50px', border: '1px solid black' }}></div>
-            <div style={{ width: '10px', height: '50px', border: '1px solid black' }}></div>
-            <div style={{ width: '10px', height: '50px', border: '1px solid black' }}></div>
-            <div style={{ width: '10px', height: '50px', border: '1px solid black' }}></div>
-            <div style={{ width: '10px', height: '50px', border: '1px solid black' }}></div>
-            <div style={{ width: '10px', height: '50px', border: '1px solid black' }}></div>
-            <div style={{ width: '10px', height: '50px', border: '1px solid black' }}></div>
-            <div style={{ width: '10px', height: '50px', border: '1px solid black' }}></div>
-            <div style={{ width: '10px', height: '50px', border: '1px solid black' }}></div>
-            <div style={{ width: '10px', height: '50px', border: '1px solid black' }}></div>
-            <div style={{ width: '10px', height: '50px', border: '1px solid black' }}></div>
-            <div style={{ width: '10px', height: '50px', border: '1px solid black' }}></div>
-            <div style={{ width: '10px', height: '50px', border: '1px solid black' }}></div>
-            <div style={{ width: '10px', height: '50px', border: '1px solid black' }}></div>
-            <div style={{ width: '10px', height: '50px', border: '1px solid black' }}></div>
-            <div style={{ width: '10px', height: '50px', border: '1px solid black' }}></div>
-            <div style={{ width: '10px', height: '50px', border: '1px solid black' }}></div>
-            <div style={{ width: '10px', height: '50px', border: '1px solid black' }}></div>
-            <div style={{ width: '10px', height: '50px', border: '1px solid black' }}></div>
-            <div style={{ width: '10px', height: '50px', border: '1px solid black' }}></div>
-            <div style={{ width: '10px', height: '50px', border: '1px solid black' }}></div>
-
-          </div>
-        </Container>
-      </main>
+        <div>
+          <div style={{ width: '10px', height: '50px', border: '1px solid black' }}></div>
+        </div>
+      </Content>
 
       <Footer />
     </PageWrapper>
