@@ -67,7 +67,6 @@ const ModalEditDragon = ({ dragonId, onClose, onDragonUpdate }) => {
           </Form.Label>
 
           <Form.Input
-            style={{ color: 'black', display: 'block' }}
             ref={dragonNameRef}
             type='text'
             defaultValue={dragon.name}
@@ -80,7 +79,6 @@ const ModalEditDragon = ({ dragonId, onClose, onDragonUpdate }) => {
           </Form.Label>
 
           <Form.Input
-            style={{ color: 'black', display: 'block' }}
             ref={dragonTypeRef}
             type='text'
             defaultValue={dragon.type}

@@ -3,8 +3,8 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 import { useGlobalContext } from '../../contexts';
 
-import { Form } from '../../components';
-import { Panel, PageWrapper, Title } from './style';
+import { Form, Panel } from '../../components';
+import { PageWrapper, Title } from './style';
 
 const Login = () => {
 	const usernameRef = useRef({});

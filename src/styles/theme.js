@@ -1,10 +1,12 @@
 const modes = {
 	dark: {
+		colorScheme: 'dark',
 		primary: '#2B2A33',
 		secondary: '#42414d',
 		color: '#FFF',
 	},
 	light: {
+		colorScheme: 'light',
 		primary: '#CCC',
 		secondary: '#FFF',
 		color: '#2B2A33',

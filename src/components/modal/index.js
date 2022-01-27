@@ -49,7 +49,7 @@ const Footer = styled.div`
 `;
 
 const Body = styled.div`
-  padding: 2.0rem 1.6rem;
+  padding: 2.6rem 1.6rem;
 `;
 
 const Modal = ({ children, isOpen, onClickOutside }) => {

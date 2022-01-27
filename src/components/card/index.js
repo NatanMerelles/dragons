@@ -5,11 +5,11 @@ import { Buttons, CardStyle, Checkbox, Label } from './style';
 const Card = ({
   name,
   type = '',
-  createdAt,
   isSelecting,
   checked,
   onSelect,
-  onEdit
+  onEdit,
+  onClick
 }) => {
 
   return (

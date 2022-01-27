@@ -5,6 +5,7 @@ const GlobalStyle = createGlobalStyle`
   
   :root {
     font-size: 62.5%;
+    color-scheme: ${props => props.theme.colors.colorScheme};
 
     @media (max-width: 720px){
       font-size: 55%;
@@ -19,10 +20,6 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
-  
-  html, body, #root {
-    height: 100vh;
   }
   
   body {
@@ -41,11 +38,6 @@ const GlobalStyle = createGlobalStyle`
   textarea {
     font: 500 1.6rem 'Poppins', sans-serif;
     color: ${props => props.theme.colors.color};
-  }
-  
-  .container {
-    width: 90vw;
-    max-width: 700px;
   }
 `;
 

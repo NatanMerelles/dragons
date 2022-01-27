@@ -12,8 +12,8 @@ export const Input = styled.input`
 
 	border-bottom: 1px solid;
 	color: ${props => props.theme.colors.color};
-	opacity: .4;
-	transition: opacity .2s;
+	opacity: 0.7;
+	transition: opacity 0.2s;
 
 	:focus {
 		opacity: 1;

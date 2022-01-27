@@ -38,11 +38,14 @@ const sizes = {
 	`,
 }
 
-export const Button = styled.button`
+const ButtonStyle = styled.button`
 	${({ size = 'medium' }) => sizes[size]}
 	${({ variant = 'primary' }) => variants[variant]}
 	width: ${props => props.fullWidth ? '100%' : 'initial'};
 
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
 	outline: none;
 	border: 1px solid;
 	border-radius: 12px;
@@ -50,4 +53,44 @@ export const Button = styled.button`
 	cursor: pointer;
 
 	transition: all .35s ease-in-out;
+
+	.button-icon {
+		display: inline-flex;
+		align-items: center;
+
+		&__start {
+			margin-right: 0.8rem;
+		}
+
+		&__end {
+			margin-left: 0.8rem;
+		}
+	}
 `;
+
+const Button = ({ children, startIcon, endIcon, ...buttonProps }) => {
+	return (
+		<ButtonStyle {...buttonProps}>
+			{
+				startIcon && (
+					<span className='button-icon button-icon__start'>
+						{startIcon}
+					</span>
+				)
+			}
+
+			{children}
+
+			{
+				endIcon && (
+					<span className='button-icon button-icon__end'>
+						{endIcon}
+					</span>
+				)
+			}
+
+		</ButtonStyle>
+	)
+}
+
+export { Button }
