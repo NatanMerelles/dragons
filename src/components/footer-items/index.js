@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 const Wrapper = styled.div`
-  background: #42414d;
+  background: ${props => props.theme.colors.secondary};
   width: 100%;
   display: ${props => props.isOpen ? 'flex' : 'none'};
   justify-content: center;

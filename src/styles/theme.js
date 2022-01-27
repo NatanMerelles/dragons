@@ -12,5 +12,8 @@ const modes = {
 }
 
 export default (mode) => ({
-	colors: modes[mode]
+	colors: {
+		header: '#1E1E1E',
+		...modes[mode]
+	}
 });

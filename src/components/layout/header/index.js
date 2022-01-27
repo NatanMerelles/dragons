@@ -12,7 +12,7 @@ const HeaderContent = styled.div`
 `;
 
 const HeaderStyle = styled.header`
-  background: #1E1E1E;
+  background: ${props => props.theme.colors.header};
   padding: 15px;
 `;
 

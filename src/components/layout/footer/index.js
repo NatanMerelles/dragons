@@ -4,7 +4,7 @@ const FooterStyle = styled.footer`
   display: flex;
   justify-content: center;
   padding: 16px;
-  background: #1E1E1E;
+  background: ${props => props.theme.colors.header};
   color: white;
 `;
 

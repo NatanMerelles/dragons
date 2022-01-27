@@ -11,7 +11,13 @@ import GlobalStyle from './styles/globalStyle';
 import { PrivateContent } from './components';
 import { Login, Dragons } from './containers';
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+    }
+  }
+});
 
 const App = () => {
   return (
