@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { Container } from '../container';
 import { Button } from '../../';
 import { Link as RouterLink } from 'react-router-dom';
+import { useGlobalContext } from '../../../contexts';
 
 const HeaderContent = styled.div`
   display: flex;
@@ -22,7 +23,10 @@ const Link = styled(RouterLink)`
   color: ${props => props.theme.colors.white};
 `;
 
-const Header = ({ onSignout = () => { } }) => {
+const Header = ({ }) => {
+
+  const { signout } = useGlobalContext()
+
   return (
     <HeaderStyle>
       <Container>
@@ -34,7 +38,7 @@ const Header = ({ onSignout = () => { } }) => {
           </Link>
 
           <div>
-            <Button onClick={onSignout}>
+            <Button onClick={signout}>
               Sair
             </Button>
           </div>

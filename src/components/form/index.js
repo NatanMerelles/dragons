@@ -10,10 +10,14 @@ const Label = styled.label`
 const Row = styled.div`
 	width: 100%;
 
-	margin-bottom: 46px;
+	margin-bottom: 4.6rem;
 
 	:last-child{
 		margin: 0;
+	}
+
+	@media(max-width: 600px){
+		margin-bottom: 3.2rem;
 	}
 `;
 

@@ -92,42 +92,44 @@ const CreateDragon = () => {
       <Content>
 
         <Panel>
-          <Title>
-            Novo Dragão
-          </Title>
+          <Panel.Item>
+            <Title>
+              Novo Dragão
+            </Title>
 
-          <Form.Row>
-            <Form.Label>
-              Nome
-            </Form.Label>
+            <Form.Row>
+              <Form.Label>
+                Nome
+              </Form.Label>
 
-            <Form.Input ref={inputNameRef} type='text' />
-          </Form.Row>
+              <Form.Input ref={inputNameRef} type='text' />
+            </Form.Row>
 
-          <Form.Row>
-            <Form.Label>
-              Tipo
-            </Form.Label>
+            <Form.Row>
+              <Form.Label>
+                Tipo
+              </Form.Label>
 
-            <Form.Input ref={inputTypeRef} type='text' />
-          </Form.Row>
+              <Form.Input ref={inputTypeRef} type='text' />
+            </Form.Row>
 
-          <Form.Row>
-            <ButtonWrapper>
-              <Form.Button
-                startIcon={
-                  <FontAwesomeIcon
-                    icon={isLoading ? faSpinner : faCheck}
-                    spin={isLoading}
-                  />
-                }
-                disabled={isLoading}
-                onClick={handleClickConfirmButton}
-              >
-                Cadastrar
-              </Form.Button>
-            </ButtonWrapper>
-          </Form.Row>
+            <Form.Row>
+              <ButtonWrapper>
+                <Form.Button
+                  startIcon={
+                    <FontAwesomeIcon
+                      icon={isLoading ? faSpinner : faCheck}
+                      spin={isLoading}
+                    />
+                  }
+                  disabled={isLoading}
+                  onClick={handleClickConfirmButton}
+                >
+                  Cadastrar
+                </Form.Button>
+              </ButtonWrapper>
+            </Form.Row>
+          </Panel.Item>
         </Panel>
 
       </Content>

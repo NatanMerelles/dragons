@@ -25,7 +25,6 @@ const updateDragonFn = async ({ dragonId, newDragon }) => await DragonsAPI.updat
 const removeDragonFn = async (dragonsIds) => await DragonsAPI.removeMany(dragonsIds);
 
 const Dragons = () => {
-  const { signout } = useGlobalContext();
   const queryClient = useQueryClient();
   const navigate = useNavigate();
 
@@ -66,7 +65,6 @@ const Dragons = () => {
     onSettled: () => queryClient.invalidateQueries(['dragons']),
   })
 
-  const handleSignout = () => signout();
   const handleCardEdit = (newCardId) => () => setEditing(newCardId);
   const handleCardSelect = (newCardId) => (e) => {
     const result = e.target.checked
@@ -89,7 +87,7 @@ const Dragons = () => {
 
   return (
     <PageWrapper>
-      <Header onSignout={handleSignout} />
+      <Header />
 
       <Content>
         <Container>
