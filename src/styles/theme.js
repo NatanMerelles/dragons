@@ -1,19 +1,23 @@
 const modes = {
 	dark: {
-		background: '#2B2A33',
+		primary: '#2B2A33',
 		secondary: '#42414d',
-		text: '#FFF',
+		color: '#FFF',
 	},
 	light: {
-		background: '#CCC',
+		primary: '#CCC',
 		secondary: '#FFF',
-		text: '#2B2A33',
+		color: '#2B2A33',
 	}
 }
 
 export default (mode) => ({
 	colors: {
 		header: '#1E1E1E',
+		green: '#13aa52',
+		red: '#FF013C',
+		yellow: '#fff000',
+		white: '#FFF',
 		...modes[mode]
 	}
 });

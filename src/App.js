@@ -36,7 +36,13 @@ const App = () => {
                 </PrivateContent>
               } />
 
-              <Route path="dragons/:dragonId" exact element={
+              <Route path="/dragon" exact element={
+                <PrivateContent>
+                  <div>novo dragão</div>
+                </PrivateContent>
+              } />
+
+              <Route path="/dragon/:dragonId" exact element={
                 <PrivateContent>
                   <div>dragão</div>
                 </PrivateContent>

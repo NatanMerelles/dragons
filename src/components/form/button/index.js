@@ -1,38 +1,53 @@
 import styled, { css } from 'styled-components';
 
-const sizes = {
-	small: css`
-		padding: 0.25rem 0.5rem;
-		font-size: 1rem;
+const variants = {
+	primary: css`
+		background: ${props => props.theme.colors.color};
+		color: ${props => props.theme.colors.primary};
 	`,
-	medium: css`
-		padding: 0.5rem 1rem;
-		font-size: 1.5rem;
+	secondary: css`
+		background: ${props => props.theme.colors.secondary};
+		color: ${props => props.theme.colors.color};
 	`,
-	large: css`
-		padding: 1rem 2rem;
-		font-size: 2.4rem;
+	success: css`
+		background: ${props => props.theme.colors.green};
+		color: ${props => props.theme.colors.white};
+	`,
+	danger: css`
+		background: ${props => props.theme.colors.danger};
+		color: ${props => props.theme.colors.white};
+	`,
+	warning: css`
+		background: ${props => props.theme.colors.warning};
+		color: ${props => props.theme.colors.white};
 	`,
 }
 
+const sizes = {
+	small: css`
+		padding: 0.6rem 0.8rem;
+		font-size: 1.4rem;
+	`,
+	medium: css`
+		padding: 0.8rem 1rem;
+		font-size: 1.8rem;
+	`,
+	large: css`
+		padding: 1rem 1.2rem;
+		font-size: 2.2rem;
+	`,
+}
 
 export const Button = styled.button`
 	${({ size = 'medium' }) => sizes[size]}
+	${({ variant = 'primary' }) => variants[variant]}
 	width: ${props => props.fullWidth ? '100%' : 'initial'};
 
 	outline: none;
-	font-size: 24px;
-	background: ${props => props.theme.colors.text};
 	border: 1px solid;
 	border-radius: 12px;
-	color: ${props => props.theme.colors.background};
 
 	cursor: pointer;
 
 	transition: all .35s ease-in-out;
-
-	:hover, :focus {
-		background: ${props => props.theme.colors.background};
-		color: ${props => props.theme.colors.text};
-	}
 `;

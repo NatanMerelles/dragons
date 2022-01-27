@@ -1,7 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog } from '@fortawesome/free-solid-svg-icons';
 import { Buttons, CardStyle, Checkbox, Label } from './style';
-import { capitalize } from '../../utils';
 
 const Card = ({
   name,
@@ -36,14 +35,10 @@ const Card = ({
 
       <div style={{ margin: '14px 0px' }}>
         <Label
-          variant={type}>
-          {capitalize(type)}
+          variant={type.toLocaleLowerCase()}>
+          {type}
         </Label>
       </div>
-
-      <p>
-        Criado em: {createdAt && new Date(createdAt).toLocaleDateString()}
-      </p>
     </CardStyle>
   )
 }

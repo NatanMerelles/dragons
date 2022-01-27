@@ -5,6 +5,14 @@ const GlobalStyle = createGlobalStyle`
   
   :root {
     font-size: 62.5%;
+
+    @media (max-width: 720px){
+      font-size: 55%;
+    }
+
+    @media (max-width: 450px){
+      font-size: 50%;
+    }
   }
   
   * {
@@ -18,7 +26,7 @@ const GlobalStyle = createGlobalStyle`
   }
   
   body {
-    background: ${props => props.theme.colors.background};
+    background: ${props => props.theme.colors.primary};
   }
   
   #root {
@@ -32,7 +40,7 @@ const GlobalStyle = createGlobalStyle`
   button,
   textarea {
     font: 500 1.6rem 'Poppins', sans-serif;
-    color: ${props => props.theme.colors.text};
+    color: ${props => props.theme.colors.color};
   }
   
   .container {

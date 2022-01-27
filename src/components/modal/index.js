@@ -38,18 +38,18 @@ const Header = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  color: ${props => props.theme.colors.text};
+  color: ${props => props.theme.colors.color};
   border-bottom: 1px solid;
 `;
 
 const Footer = styled.div`
   padding: 1.6rem;
 
-  border-top: 1px solid ${props => props.theme.colors.text};
+  border-top: 1px solid ${props => props.theme.colors.color};
 `;
 
 const Body = styled.div`
-  padding: 1.6rem;
+  padding: 2.0rem 1.6rem;
 `;
 
 const Modal = ({ children, isOpen, onClickOutside }) => {

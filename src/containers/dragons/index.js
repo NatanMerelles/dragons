@@ -1,57 +1,73 @@
 import { useState } from 'react';
-import styled from 'styled-components';
-import { useQuery } from 'react-query';
-
-import { DragonsAPI } from '../../clients/DragonsAPI';
-
-import { Header, Footer, Container, Button, Card, FooterItems, Modal } from '../../components';
-import { useGlobalContext } from '../../contexts';
+import produce from 'immer';
+import { useQuery, useMutation, useQueryClient } from 'react-query';
+import { useNavigate } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
+import { DragonsAPI } from '../../clients/DragonsAPI';
+import { useGlobalContext } from '../../contexts';
 
-const PageWrapper = styled.div`
-	height: 100vh;
-	width: 100vw;
-
-  display: flex;
-  flex-direction: column;
-`;
-
-const Content = styled.main`
-  padding: 26px; 
-
-  flex: 1;
-`;
-
-const ContentTitle = styled.div`
-  display: flex;
-  justify-content: space-between;
-  padding: 16px 0;
-`;
-
-const CardList = styled.ul`
-  list-style: none;
-
-  margin: 0 -12px;
-`;
+import {
+  Header,
+  Footer,
+  Container,
+  Button,
+  Card,
+  FooterItems
+} from '../../components';
+import { ModalEditDragon } from './modals';
+import { PageWrapper, Content, ContentTitle, CardList } from './style';
 
 const getDragonsFn = async () => await DragonsAPI.find();
+const updateDragonFn = async ({ dragonId, newDragon }) => await DragonsAPI.update(dragonId, newDragon);
+const removeDragonFn = async (dragonsIds) => await DragonsAPI.removeMany(dragonsIds);
 
 const Dragons = () => {
   const { signout } = useGlobalContext();
+  const queryClient = useQueryClient();
+  const navigate = useNavigate();
+
   const { data: dragons } = useQuery(['dragons'], getDragonsFn, { initialData: [] });
-  console.log(dragons)
   const [selected, setSelected] = useState([]);
-  const [editing, setEditing] = useState(false);
+  const [editing, setEditing] = useState(null);
 
-  const handleSignout = () => {
-    signout();
-  }
+  const { mutate: updateDragon } = useMutation(updateDragonFn, {
+    onMutate: async ({ dragonId, newDragon }) => {
+      await queryClient.cancelQueries(['dragons']);
 
+      const previous = queryClient.getQueryData(['dragons']);
+
+      queryClient.setQueryData(['dragons'], produce((draft) => {
+        const dragon = draft.find((dragon) => dragon.id === dragonId);
+
+        dragon.name = newDragon.name;
+        dragon.type = newDragon.type;
+      }));
+
+      return { previous }
+    },
+    onError: (err, data, context) => queryClient.setQueryData(['dragons'], context.previous),
+    onSettled: () => queryClient.invalidateQueries(['dragons']),
+  })
+
+  const { mutate: removeDragon } = useMutation(removeDragonFn, {
+    onMutate: async (dragonsIds) => {
+      await queryClient.cancelQueries(['dragons']);
+
+      const previous = queryClient.getQueryData(['dragons']);
+
+      queryClient.setQueryData(['dragons'], (old) => old.filter(dragon => !dragonsIds.includes(dragon.id)));
+
+      return { previous }
+    },
+    onError: (err, data, context) => queryClient.setQueryData(['dragons'], context.previous),
+    onSettled: () => queryClient.invalidateQueries(['dragons']),
+  })
+
+  const handleSignout = () => signout();
   const handleCardEdit = (newCardId) => () => setEditing(newCardId);
-
   const handleCardSelect = (newCardId) => (e) => {
     const result = e.target.checked
       ? [...selected, newCardId]
@@ -60,9 +76,16 @@ const Dragons = () => {
     setSelected(result);
   };
 
-  const isSelecting = Boolean(selected.length);
-  const handleConfirmSelecting = () => { }
+  const handleConfirmSelecting = async () => {
+    removeDragon(selected);
+    setSelected([]);
+  };
+
   const handleDismissSelecting = () => setSelected([]);
+  const handleCloseModal = () => setEditing(null);
+  const handleClickNewDragonButton = () => navigate("/dragon");
+
+  const isSelecting = Boolean(selected.length);
 
   return (
     <PageWrapper>
@@ -73,23 +96,29 @@ const Dragons = () => {
           <ContentTitle>
             <h2>Encontre seu Dragão:</h2>
 
-            <Button size='small' onClick={() => setEditing(true)}>
+            <Button
+              variant='success'
+              size='small'
+              onClick={handleClickNewDragonButton}
+            >
               <FontAwesomeIcon icon={faPlus} />
             </Button>
           </ContentTitle>
 
           <CardList>
             {
-              dragons.map(({ id, ...props }) => (
-                <Card
-                  key={id}
-                  onSelect={handleCardSelect(id)}
-                  onEdit={handleCardEdit(id)}
-                  isSelecting={isSelecting}
-                  checked={selected.includes(id)}
-                  {...props}
-                />
-              ))
+              dragons
+                .sort((first, second) => new Intl.Collator().compare(first.name, second.name))
+                .map(({ id, ...props }) => (
+                  <Card
+                    key={id}
+                    onSelect={handleCardSelect(id)}
+                    onEdit={handleCardEdit(id)}
+                    isSelecting={isSelecting}
+                    checked={selected.includes(id)}
+                    {...props}
+                  />
+                ))
             }
           </CardList>
         </Container>
@@ -102,25 +131,11 @@ const Dragons = () => {
         onDismiss={handleDismissSelecting}
       />
 
-      <Modal isOpen={editing} >
-        <Modal.Header>
-          <div>
-            <h1>
-              Editar Dragão
-            </h1>
-          </div>
-
-          <div>
-            <FontAwesomeIcon fixedWidth icon={faTimes} onClick={() => setEditing(false)} />
-          </div>
-        </Modal.Header>
-        <Modal.Body>
-
-        </Modal.Body>
-        <Modal.Footer>
-
-        </Modal.Footer>
-      </Modal>
+      <ModalEditDragon
+        dragonId={editing}
+        onClose={handleCloseModal}
+        onDragonUpdate={updateDragon}
+      />
 
       <Footer />
     </PageWrapper>
