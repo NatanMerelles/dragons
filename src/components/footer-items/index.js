@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Button } from '../';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 const Wrapper = styled.div`
   background: ${props => props.theme.colors.secondary};
@@ -19,7 +19,13 @@ const Item = styled.div`
    margin: 0 16px;
 `;
 
-const FooterItems = ({ onConfirm, onDismiss, isOpen, countItems }) => {
+const FooterItems = ({
+  onConfirm,
+  onDismiss,
+  isOpen,
+  isLoading,
+  countItems
+}) => {
 
   return (
     <Wrapper isOpen={isOpen}>
@@ -28,13 +34,27 @@ const FooterItems = ({ onConfirm, onDismiss, isOpen, countItems }) => {
       </Item>
 
       <Item>
-        <Button variant='primary' onClick={onConfirm}>
+        <Button
+          startIcon={
+            <FontAwesomeIcon
+              icon={isLoading ? faSpinner : faCheck}
+              spin={isLoading}
+            />
+          }
+          disabled={isLoading}
+          variant='primary'
+          onClick={onConfirm}
+        >
           Excluir
         </Button>
       </Item>
 
       <Item>
-        <Button variant='secondary' onClick={onDismiss}>
+        <Button
+          disabled={isLoading}
+          variant='secondary'
+          onClick={onDismiss}
+        >
           Cancelar
         </Button>
       </Item>

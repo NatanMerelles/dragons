@@ -39,20 +39,20 @@ const Header = styled.div`
   align-items: center;
 
   color: ${props => props.theme.colors.color};
-  border-bottom: 1px solid;
+  border-bottom: 1px solid #dee2e6;
 `;
 
 const Footer = styled.div`
   padding: 1.6rem;
 
-  border-top: 1px solid ${props => props.theme.colors.color};
+  border-top: 1px solid #dee2e6;
 `;
 
 const Body = styled.div`
   padding: 2.6rem 1.6rem;
 `;
 
-const Modal = ({ children, isOpen, onClickOutside }) => {
+const Modal = ({ children, isOpen }) => {
   const [body] = document.getElementsByTagName('body');
 
   if (!isOpen) { return null }

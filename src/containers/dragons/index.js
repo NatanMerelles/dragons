@@ -24,6 +24,7 @@ const getDragonsFn = async () => await DragonsAPI.find();
 const updateDragonFn = async ({ dragonId, newDragon }) => await DragonsAPI.update(dragonId, newDragon);
 const removeDragonFn = async (dragonsIds) => await DragonsAPI.removeMany(dragonsIds);
 
+
 const Dragons = () => {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
@@ -32,7 +33,7 @@ const Dragons = () => {
   const [selected, setSelected] = useState([]);
   const [editing, setEditing] = useState(null);
 
-  const { mutate: updateDragon } = useMutation(updateDragonFn, {
+  const { mutate: updateDragon, isLoading: isLoadingUpdate } = useMutation(updateDragonFn, {
     onMutate: async ({ dragonId, newDragon }) => {
       await queryClient.cancelQueries(['dragons']);
 
@@ -51,7 +52,7 @@ const Dragons = () => {
     onSettled: () => queryClient.invalidateQueries(['dragons']),
   })
 
-  const { mutate: removeDragon } = useMutation(removeDragonFn, {
+  const { mutate: removeDragon, isLoading: isLoadingRemove } = useMutation(removeDragonFn, {
     onMutate: async (dragonsIds) => {
       await queryClient.cancelQueries(['dragons']);
 
@@ -75,8 +76,13 @@ const Dragons = () => {
   };
 
   const handleConfirmSelecting = async () => {
-    removeDragon(selected);
-    setSelected([]);
+    const callback = {
+      onSuccess: () => {
+        setSelected([]);
+      }
+    }
+
+    removeDragon(selected, callback);
   };
 
   const handleDismissSelecting = () => setSelected([]);
@@ -124,6 +130,7 @@ const Dragons = () => {
 
       <FooterItems
         isOpen={isSelecting}
+        isLoading={isLoadingRemove}
         countItems={selected.length}
         onConfirm={handleConfirmSelecting}
         onDismiss={handleDismissSelecting}
@@ -131,6 +138,7 @@ const Dragons = () => {
 
       <ModalEditDragon
         dragonId={editing}
+        isLoading={isLoadingUpdate}
         onClose={handleCloseModal}
         onDragonUpdate={updateDragon}
       />

@@ -19,7 +19,7 @@ const ContentTitle = styled.div`
   justify-content: space-between;
   padding: 16px 0;
 
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid ${props => props.theme.colors.color};
   margin-bottom: 0.8rem; 
 `;
 

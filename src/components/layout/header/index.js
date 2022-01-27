@@ -1,8 +1,13 @@
 import styled from 'styled-components';
+import { Link as RouterLink } from 'react-router-dom';
+
+import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import { useGlobalContext } from '../../../contexts';
+
 import { Container } from '../container';
 import { Button } from '../../';
-import { Link as RouterLink } from 'react-router-dom';
-import { useGlobalContext } from '../../../contexts';
 
 const HeaderContent = styled.div`
   display: flex;
@@ -39,7 +44,7 @@ const Header = ({ }) => {
 
           <div>
             <Button onClick={signout}>
-              Sair
+              <FontAwesomeIcon icon={faSignOutAlt} />
             </Button>
           </div>
         </HeaderContent>

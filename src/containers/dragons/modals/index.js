@@ -1,14 +1,19 @@
 import { useState, useEffect, useRef } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 import { DragonsAPI } from '../../../clients/DragonsAPI';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck, faSpinner, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 import { Modal, Form, Button } from '../../../components';
 import { ButtonsWrapper } from './style';
 
-
-const ModalEditDragon = ({ dragonId, onClose, onDragonUpdate }) => {
+const ModalEditDragon = ({
+  dragonId,
+  isLoading,
+  onClose,
+  onDragonUpdate
+}) => {
   const [dragon, setDragon] = useState({});
 
   const dragonNameRef = useRef({});
@@ -88,6 +93,13 @@ const ModalEditDragon = ({ dragonId, onClose, onDragonUpdate }) => {
       <Modal.Footer>
         <ButtonsWrapper>
           <Button
+            startIcon={
+              <FontAwesomeIcon
+                icon={isLoading ? faSpinner : faCheck}
+                spin={isLoading}
+              />
+            }
+            disabled={isLoading}
             variant='primary'
             onClick={handleConfirmButton}
           >
