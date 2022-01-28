@@ -21,6 +21,10 @@ const ContentTitle = styled.div`
 
   border-bottom: 1px solid ${props => props.theme.colors.color};
   margin-bottom: 0.8rem; 
+
+  > button {
+    max-height: 3.5rem;
+  }
 `;
 
 const CardList = styled.ul`

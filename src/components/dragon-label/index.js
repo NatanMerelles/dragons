@@ -14,10 +14,17 @@ const dragonsColors = new Proxy(colors, {
 })
 
 const DragonLabel = styled.span`
+  display: inline-block;
+  max-width: 100%;
   padding: 6px 12px;
   background: ${props => `${dragonsColors[props.variant]}44`};
   border: 1px solid ${props => dragonsColors[props.variant]};
   border-radius: 8px;
+  
+  vertical-align: middle;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 export { DragonLabel }

@@ -39,6 +39,7 @@ const CreateDragon = () => {
 
     if (name && type) {
       const dragon = {
+        id: Math.random().toString(16).slice(2),
         name,
         type,
         createdAt: new Date()

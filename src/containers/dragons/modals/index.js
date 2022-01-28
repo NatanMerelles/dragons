@@ -35,13 +35,12 @@ const ModalEditDragon = ({
   const handleConfirmButton = () => {
     const name = dragonNameRef.current.value;
     const type = dragonTypeRef.current.value;
+    const hasChangedName = name && name !== dragon.name;
+    const hasChangedType = type && type !== dragon.type;
 
-    if (name && type) {
-      const newDragon = {
-        ...dragon,
-        name,
-        type
-      }
+
+    if (hasChangedName || hasChangedType) {
+      const newDragon = { name, type }
 
       onDragonUpdate({ dragonId, newDragon });
       handleCloseModal();
