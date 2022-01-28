@@ -30,6 +30,7 @@ const CardStyle = styled.li`
 const Buttons = styled.div`
   position: absolute;
   display: flex;
+  align-items: center;
   opacity: ${props => props.isSelecting ? 1 : 0};
   top: 0.8rem;
   right: 0.8rem;
@@ -44,29 +45,26 @@ const Buttons = styled.div`
   }
 `;
 
-const colors = {
-  fire: '#DA5932',
-  light: '#F9D27A',
-  air: '#54A656',
-  root: '#5F4126',
-  water: '#1FB5B5',
-  darkness: '#7A2F7C',
-}
-
-const dragonsColors = new Proxy(colors, {
-  get: (target, prop) => target.hasOwnProperty(prop) ? target[prop] : '#d4d4d4'
-})
-
-const Label = styled.span`
-  padding: 6px 12px;
-  background: ${props => `${dragonsColors[props.variant]}44`};
-  border: 1px solid ${props => dragonsColors[props.variant]};
-  border-radius: 8px;
-`;
-
 const Checkbox = styled.input`
-  width: '16px';
-  height: '16px'; 
+  width: 1.8rem;
+  height: 1.8rem; 
 `;
 
-export { Buttons, CardStyle, Checkbox, Label }
+const IconButton = styled.span`
+  padding: 0.4rem;
+  cursor: pointer;
+  font-size: 1.6rem;
+  color: ${props => props.theme.colors.color};
+
+  :hover{
+    color: ${props => props.theme.colors.colorSecondary};
+  }
+`;
+
+const Name = styled.span`
+  color: ${props => props.theme.colors.color};
+  text-decoration: none;
+  cursor: pointer;  
+`;
+
+export { Buttons, CardStyle, Checkbox, IconButton, Name }

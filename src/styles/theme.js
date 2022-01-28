@@ -4,12 +4,14 @@ const modes = {
 		primary: '#2B2A33',
 		secondary: '#42414d',
 		color: '#FFF',
+		colorSecondary: '#CCC',
 	},
 	light: {
 		colorScheme: 'light',
 		primary: '#CCC',
 		secondary: '#FFF',
 		color: '#2B2A33',
+		colorSecondary: '#42414d',
 	}
 }
 

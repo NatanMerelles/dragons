@@ -7,7 +7,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 import { DragonsAPI } from '../../clients/DragonsAPI';
-import { useGlobalContext } from '../../contexts';
 
 import {
   Header,
@@ -88,6 +87,7 @@ const Dragons = () => {
   const handleDismissSelecting = () => setSelected([]);
   const handleCloseModal = () => setEditing(null);
   const handleClickNewDragonButton = () => navigate("/dragon");
+  const handleClickCard = (dragonId) => () => navigate(`/dragon/${dragonId}`);
 
   const isSelecting = Boolean(selected.length);
 
@@ -113,14 +113,15 @@ const Dragons = () => {
             {
               dragons
                 .sort((first, second) => new Intl.Collator().compare(first.name, second.name))
-                .map(({ id, ...props }) => (
+                .map((props) => (
                   <Card
-                    key={id}
-                    onSelect={handleCardSelect(id)}
-                    onEdit={handleCardEdit(id)}
-                    isSelecting={isSelecting}
-                    checked={selected.includes(id)}
+                    key={props.id}
                     {...props}
+                    isSelecting={isSelecting}
+                    onSelect={handleCardSelect(props.id)}
+                    onEdit={handleCardEdit(props.id)}
+                    checked={selected.includes(props.id)}
+                    onClick={handleClickCard(props.id)}
                   />
                 ))
             }

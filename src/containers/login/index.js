@@ -142,13 +142,14 @@ const Login = () => {
 		<PageWrapper>
 			<Panel>
 				<Panel.Item className='panel-item panel-item__login'>
-					<Title>Seja Bem-vindo(a) ao DragonRepo</Title>
+					<Title>Seja Bem-vindo(a) ao DragonsRepo</Title>
 
 					<Form>
 						<Form.Row>
 							<Form.Input
 								ref={usernameRef}
 								type='text'
+								aria-label='login'
 								placeholder="Digite seu Login"
 							/>
 						</Form.Row>
@@ -157,12 +158,16 @@ const Login = () => {
 							<Form.Input
 								ref={passwordRef}
 								type='password'
+								aria-label='password'
 								placeholder="Digite sua Senha"
 							/>
 						</Form.Row>
 
 						<Form.Row>
-							<Form.Button fullWidth onClick={handleButtonLogin}>
+							<Form.Button
+								fullWidth
+								onClick={handleButtonLogin}
+							>
 								Login
 							</Form.Button>
 						</Form.Row>

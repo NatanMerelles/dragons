@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useMutation, useQueryClient } from 'react-query';
 
@@ -7,39 +7,8 @@ import { faCheck, faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 import { DragonsAPI } from '../../clients/DragonsAPI';
 
-import { Header, Footer, Form, Panel } from '../../components';
-import { useRef } from 'react';
-
-
-const PageWrapper = styled.div`
-	height: 100vh;
-	width: 100vw;
-
-  display: flex;
-  flex-direction: column;
-`;
-
-const Content = styled.main`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 26px; 
-
-  flex: 1;
-`;
-
-export const Title = styled.h1`
-	margin-bottom: 48px;
-
-	font-family: 'Archivo', sans-serif;
-`;
-
-const ButtonWrapper = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-`;
+import { Header, Footer, Form, Panel, PageWrapper } from '../../components';
+import { Content, Title, ButtonWrapper } from './style';
 
 const createDragonFn = async (dragon) => await DragonsAPI.insert(dragon);
 

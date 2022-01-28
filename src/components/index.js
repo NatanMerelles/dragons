@@ -5,3 +5,5 @@ export * from './card';
 export * from './footer-items';
 export * from './modal';
 export * from './panel';
+export * from './dragon-label';
+export * from './loading';

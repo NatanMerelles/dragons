@@ -43,6 +43,7 @@ const FooterItems = ({
           }
           disabled={isLoading}
           variant='primary'
+          aria-label='confirm'
           onClick={onConfirm}
         >
           Excluir
@@ -53,6 +54,7 @@ const FooterItems = ({
         <Button
           disabled={isLoading}
           variant='secondary'
+          aria-label="dismiss"
           onClick={onDismiss}
         >
           Cancelar

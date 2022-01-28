@@ -9,7 +9,7 @@ import ThemeProvider from './styles/themeProvider';
 
 import GlobalStyle from './styles/globalStyle';
 import { PrivateContent } from './components';
-import { Login, Dragons, CreateDragon } from './containers';
+import { Login, Dragon, Dragons, CreateDragon } from './containers';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -44,7 +44,7 @@ const App = () => {
 
               <Route path="/dragon/:dragonId" exact element={
                 <PrivateContent>
-                  <div>dragão</div>
+                  <Dragon />
                 </PrivateContent>
               } />
 

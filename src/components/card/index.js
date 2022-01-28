@@ -1,26 +1,28 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog } from '@fortawesome/free-solid-svg-icons';
-import { Buttons, CardStyle, Checkbox, Label } from './style';
+import { Link } from 'react-router-dom';
+import { DragonLabel } from '../';
+import { Buttons, CardStyle, Checkbox, IconButton, Name } from './style';
 
 const Card = ({
+  id,
   name,
   type = '',
   isSelecting,
   checked,
   onSelect,
   onEdit,
-  onClick
 }) => {
 
   return (
     <CardStyle>
       <Buttons isSelecting={isSelecting}>
-        <div>
+        <IconButton>
           <FontAwesomeIcon
             icon={faCog}
             onClick={onEdit}
           />
-        </div>
+        </IconButton>
 
         <div>
           <Checkbox
@@ -31,13 +33,15 @@ const Card = ({
         </div>
       </Buttons>
 
-      <h1>{name}</h1>
+      <Name as={Link} to={`/dragon/${id}`}>
+        <h1>{name}</h1>
+      </Name>
 
       <div style={{ margin: '14px 0px' }}>
-        <Label
+        <DragonLabel
           variant={type.toLocaleLowerCase()}>
           {type}
-        </Label>
+        </DragonLabel>
       </div>
     </CardStyle>
   )
