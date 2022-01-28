@@ -22,9 +22,9 @@ Uma página para cadastro de dragões:
 
 ### Iniciar aplicação
 
-para iniciar a aplicação é necessário rodar o comando 'npm run start'
+para iniciar a aplicação é necessário rodar o comando `npm run start`
 a aplicação estará disponivel em: http://localhost:3000 ou http://192.168.0.112:3000 nos demais dispositivos conectados a rede
 
 o usuário padrão é:
-login: admin
-senha: 123123
+- login: admin
+- senha: 123123
