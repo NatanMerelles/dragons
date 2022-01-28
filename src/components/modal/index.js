@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 
@@ -72,6 +73,14 @@ const Modal = ({ children, isOpen }) => {
     )
   )
 }
+
+Modal.propTypes = {
+  isOpen: PropTypes.bool
+};
+
+Modal.defaultProps = {
+  isOpen: false
+};
 
 Object.assign(Modal, { Header, Body, Footer });
 

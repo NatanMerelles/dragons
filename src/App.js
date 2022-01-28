@@ -1,23 +1,13 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import {
-  QueryClient,
-  QueryClientProvider,
-} from 'react-query'
+import { QueryClientProvider } from 'react-query'
 
+import { queryClient } from './clients/queryClient';
 import { GlobalContextProvider } from './contexts';
 import ThemeProvider from './styles/themeProvider';
 
 import GlobalStyle from './styles/globalStyle';
 import { PrivateContent } from './components';
 import { Login, Dragon, Dragons, CreateDragon } from './containers';
-
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      refetchOnWindowFocus: false,
-    }
-  }
-});
 
 const App = () => {
   return (

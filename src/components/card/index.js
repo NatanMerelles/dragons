@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
@@ -21,16 +22,15 @@ const Card = ({
           <FontAwesomeIcon
             icon={faCog}
             onClick={onEdit}
+            fixedWidth
           />
         </IconButton>
 
-        <div>
-          <Checkbox
-            type='checkbox'
-            checked={checked}
-            onChange={onSelect}
-          />
-        </div>
+        <Checkbox
+          type='checkbox'
+          checked={checked}
+          onChange={onSelect}
+        />
       </Buttons>
 
       <Name as={Link} to={`/dragon/${id}`}>
@@ -46,5 +46,25 @@ const Card = ({
     </CardStyle>
   )
 }
+
+Card.propTypes = {
+  id: PropTypes.string,
+  name: PropTypes.string,
+  type: PropTypes.string,
+  isSelecting: PropTypes.bool,
+  checked: PropTypes.bool,
+  onSelect: PropTypes.func,
+  onEdit: PropTypes.func
+};
+
+Card.defaultProps = {
+  id: '',
+  name: '',
+  type: '',
+  isSelecting: false,
+  checked: false,
+  onSelect: () => { },
+  onEdit: () => { }
+};
 
 export { Card }

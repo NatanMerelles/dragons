@@ -54,6 +54,7 @@ const IconButton = styled.span`
   padding: 0.4rem;
   cursor: pointer;
   font-size: 1.6rem;
+  line-height: 0;
   color: ${props => props.theme.colors.color};
 
   :hover{

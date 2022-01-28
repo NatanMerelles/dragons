@@ -17,5 +17,5 @@ test('should render home page logged in', () => {
   fireEvent.change(password, { target: { value: '123123' } })
   fireEvent.click(button);
 
-  expect(screen.getByText(/dragonrepo/i)).toBeInTheDocument();
+  expect(screen.getByText(/dragonsrepo/i)).toBeInTheDocument();
 });

@@ -1,8 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
-const GlobalStyle = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap');
-  
+const GlobalStyle = createGlobalStyle`  
   :root {
     font-size: 62.5%;
     color-scheme: ${props => props.theme.colors.colorScheme};

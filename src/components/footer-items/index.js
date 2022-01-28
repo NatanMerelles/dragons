@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Button } from '../';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -9,14 +10,28 @@ const Wrapper = styled.div`
   display: ${props => props.isOpen ? 'flex' : 'none'};
   justify-content: center;
   align-items: center;
+  flex-wrap: nowrap;
   position: fixed;
   padding: 26px;
   bottom: 0;
   left: 0;
+
+  @media (max-width: 420px){
+    flex-wrap: wrap;
+    
+    > :first-child {
+      flex: 1 1 100%;
+    }
+  }
 `;
 
 const Item = styled.div`
-   margin: 0 16px;
+  text-align: center;
+  margin: 0 1.6rem;
+
+  @media (max-width: 420px){
+    margin: 1.2rem;
+  }
 `;
 
 const FooterItems = ({
@@ -49,7 +64,6 @@ const FooterItems = ({
           Excluir
         </Button>
       </Item>
-
       <Item>
         <Button
           disabled={isLoading}
@@ -63,5 +77,21 @@ const FooterItems = ({
     </Wrapper>
   )
 }
+
+FooterItems.propTypes = {
+  countItems: PropTypes.number,
+  isOpen: PropTypes.bool,
+  isLoading: PropTypes.bool,
+  onConfirm: PropTypes.func,
+  onDismiss: PropTypes.func
+};
+
+FooterItems.defaultProps = {
+  countItems: 0,
+  isOpen: false,
+  isLoading: false,
+  onConfirm: () => { },
+  onDismiss: () => { }
+};
 
 export { FooterItems }

@@ -28,8 +28,12 @@ const Link = styled(RouterLink)`
   color: ${props => props.theme.colors.white};
 `;
 
-const Header = ({ }) => {
+const ButtonWrapper = styled.div`
+  display: flex;
+  align-items: center;
+`;
 
+const Header = ({ }) => {
   const { signout } = useGlobalContext()
 
   return (
@@ -42,11 +46,11 @@ const Header = ({ }) => {
             </h1>
           </Link>
 
-          <div>
+          <ButtonWrapper>
             <Button onClick={signout}>
               <FontAwesomeIcon icon={faSignOutAlt} />
             </Button>
-          </div>
+          </ButtonWrapper>
         </HeaderContent>
       </Container>
     </HeaderStyle>

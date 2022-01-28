@@ -15,7 +15,7 @@ const modes = {
 	}
 }
 
-export default (mode) => ({
+const theme = (mode) => ({
 	colors: {
 		header: '#1E1E1E',
 		green: '#13aa52',
@@ -25,3 +25,5 @@ export default (mode) => ({
 		...modes[mode]
 	}
 });
+
+export default theme;

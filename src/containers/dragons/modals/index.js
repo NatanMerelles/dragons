@@ -49,7 +49,7 @@ const ModalEditDragon = ({
   }
 
   return (
-    <Modal isOpen={dragonId} >
+    <Modal isOpen={!!dragonId} >
       <Modal.Header>
         <div>
           <h3>
