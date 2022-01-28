@@ -6,7 +6,8 @@ import { GlobalContextProvider } from './contexts';
 import ThemeProvider from './styles/themeProvider';
 
 import GlobalStyle from './styles/globalStyle';
-import { PrivateContent } from './components';
+import { PrivateContent, Switch } from './components';
+
 import { Login, Dragon, Dragons, CreateDragon } from './containers';
 
 const App = () => {

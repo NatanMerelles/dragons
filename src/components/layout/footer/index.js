@@ -1,17 +1,28 @@
-import styled from 'styled-components';
+import { useGlobalContext } from '../../../contexts';
 
-const FooterStyle = styled.footer`
-  display: flex;
-  justify-content: center;
-  padding: 16px;
-  background: ${props => props.theme.colors.header};
-  color: white;
-`;
+import { faMoon, faLightbulb } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import { Switch } from '../..';
+import { FooterStyle, SwitchWrapper } from './style';
 
 const Footer = () => {
+  const global = useGlobalContext();
+
   return (
     <FooterStyle>
-      Development By: Natan Merelles
+      <p>
+        Development By: Natan Merelles
+      </p>
+
+      <SwitchWrapper>
+        <Switch
+          icon={<FontAwesomeIcon icon={global.mode === 'dark' ? faMoon : faLightbulb} />}
+          onChange={(e) => global.changeMode(e.target.checked ? 'dark' : 'light')}
+          checked={global.mode === 'dark'}
+        />
+      </SwitchWrapper>
+
     </FooterStyle>
   )
 }

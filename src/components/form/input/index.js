@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Input = styled.input`
+const Input = styled.input`
 	outline: none;
 
 	display: block;
@@ -19,3 +19,5 @@ export const Input = styled.input`
 		opacity: 1;
 	}
 `;
+
+export { Input }

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Button } from './button';
 import { Input } from './input';
+import { Switch } from './switch';
 
 const Label = styled.label`
 	font-weight: 600;
@@ -25,4 +26,4 @@ const Form = styled.form``;
 
 Object.assign(Form, { Row, Button, Input, Label });
 
-export { Form, Input, Button }
+export { Form, Input, Button, Switch }

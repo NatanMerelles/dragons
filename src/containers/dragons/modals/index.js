@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faSpinner, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 import { Modal, Form, Button } from '../../../components';
-import { ButtonsWrapper } from './style';
+import { ButtonsWrapper, Dismiss } from './style';
 
 const ModalEditDragon = ({
   dragonId,
@@ -57,13 +57,12 @@ const ModalEditDragon = ({
           </h3>
         </div>
 
-        <div>
+        <Dismiss onClick={handleCloseModal}>
           <FontAwesomeIcon
             icon={faTimes}
-            onClick={handleCloseModal}
             fixedWidth
           />
-        </div>
+        </Dismiss>
       </Modal.Header>
       <Modal.Body>
         <Form.Row>

@@ -10,4 +10,9 @@ const ButtonsWrapper = styled.div`
   }
 `;
 
-export { ButtonsWrapper }
+const Dismiss = styled.div`
+  padding: 0.6rem;
+  cursor: pointer;
+`;
+
+export { ButtonsWrapper, Dismiss }

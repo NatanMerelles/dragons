@@ -4,14 +4,22 @@ const modes = {
 		primary: '#2B2A33',
 		secondary: '#42414d',
 		color: '#FFF',
-		colorSecondary: '#CCC',
+		colorSecondary: '#EDEDED',
+		buttonPrimary: '#FAFAFA',
+		buttonSecondary: '#555463',
+		hoverPrimary: '#E0E0E0',
+		hoverSecondary: '#4f4e5c'
 	},
 	light: {
 		colorScheme: 'light',
-		primary: '#CCC',
+		primary: '#EDEDED',
 		secondary: '#FFF',
 		color: '#2B2A33',
 		colorSecondary: '#42414d',
+		buttonPrimary: '#555463',
+		buttonSecondary: '#FAFAFA',
+		hoverPrimary: '#4f4e5c',
+		hoverSecondary: '#E0E0E0'
 	}
 }
 

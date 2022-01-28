@@ -20,6 +20,7 @@ const Name = styled.p`
 `;
 
 const Info = styled.p`
+  word-break: break-word;
   font-size: 2.6rem;
   margin-bottom: 1.6rem;
 

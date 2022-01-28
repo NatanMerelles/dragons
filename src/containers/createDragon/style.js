@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-
 const Content = styled.main`
   display: flex;
   align-items: center;

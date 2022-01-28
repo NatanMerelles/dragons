@@ -2,7 +2,7 @@ import { ThemeProvider } from 'styled-components';
 import { useGlobalContext } from '../contexts';
 import theme from './theme';
 
-export default ({ children }) => {
+const Provider = ({ children }) => {
 	const global = useGlobalContext();
 
 	return (
@@ -13,3 +13,5 @@ export default ({ children }) => {
 		</ThemeProvider>
 	);
 }
+
+export default Provider;

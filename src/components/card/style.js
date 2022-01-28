@@ -43,6 +43,10 @@ const Buttons = styled.div`
   ${CardStyle}:hover &{
     opacity: 1;
   }
+
+  @media (max-width: 600px){
+    opacity: 1;
+  }
 `;
 
 const Checkbox = styled.input`
@@ -66,6 +70,12 @@ const Name = styled.span`
   color: ${props => props.theme.colors.color};
   text-decoration: none;
   cursor: pointer;  
+
+  > h1 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 `;
 
 export { Buttons, CardStyle, Checkbox, IconButton, Name }
