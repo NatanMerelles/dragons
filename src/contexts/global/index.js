@@ -4,7 +4,7 @@ const GlobalContext = createContext(null);
 
 const GlobalContextProvider = ({ children }) => {
 	const [user, setUser] = useState(localStorage && localStorage.getItem('username'));
-	const [mode, setMode] = useState(localStorage && localStorage.getItem('mode') || 'dark');
+	const [mode, setMode] = useState((localStorage && localStorage.getItem('mode')) || 'dark');
 
 	const signin = (newUser) => {
 		return new Promise((resolve, reject) => {
